@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Tools</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+text-align:center;
+padding:20px;
+}
+
+.container{
+background:white;
+padding:20px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:90%;
+padding:10px;
+margin:5px;
+}
+
+button{
+padding:10px 20px;
+cursor:pointer;
+}
+
+.result{
+margin-top:15px;
+font-size:20px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Trading Tools</h1>
+
+<h2>Lot Size Calculator</h2>
+
+<input type="number" id="balance" placeholder="Balance ($)">
+<input type="number" id="risk" placeholder="Risk (%)">
+<input type="number" id="sl" placeholder="Stop Loss (Pips)">
+
+<br><br>
+
+<button onclick="calculateLot()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calculateLot(){
+
+let balance=parseFloat(document.getElementById('balance').value);
+let risk=parseFloat(document.getElementById('risk').value);
+let sl=parseFloat(document.getElementById('sl').value);
+
+if(!balance || !risk || !sl){
+document.getElementById('result').innerHTML="Please fill all fields";
+return;
+}
+
+let riskMoney=balance*risk/100;
+let lot=riskMoney/(sl*10);
+
+document.getElementById('result').innerHTML=
+"Recommended Lot: "+lot.toFixed(2);
+
+}
+</script>
+
+</body>
+  </html>
