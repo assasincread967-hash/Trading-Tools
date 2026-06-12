@@ -1,67 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Trading Tools</title>
 
 <style>
+
 body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-text-align:center;
+margin:0;
+font-family:Arial, sans-serif;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#111827;
 padding:20px;
+text-align:center;
+border-bottom:2px solid gold;
+}
+
+header h1{
+margin:0;
+color:gold;
+}
+
+nav{
+margin-top:10px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
 }
 
 .container{
-background:white;
-padding:20px;
-border-radius:10px;
 max-width:500px;
-margin:auto;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+margin:40px auto;
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(255,215,0,0.2);
+}
+
+h2{
+text-align:center;
+color:gold;
 }
 
 input{
-width:90%;
-padding:10px;
-margin:5px;
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+box-sizing:border-box;
+font-size:16px;
 }
 
 button{
-padding:10px 20px;
+width:100%;
+padding:12px;
+background:gold;
+border:none;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
 cursor:pointer;
 }
 
+button:hover{
+opacity:0.9;
+}
+
 .result{
-margin-top:15px;
+margin-top:20px;
+padding:15px;
+background:#0f172a;
+border-radius:8px;
+text-align:center;
 font-size:20px;
 font-weight:bold;
+color:gold;
 }
+
+footer{
+text-align:center;
+padding:20px;
+margin-top:40px;
+border-top:1px solid #333;
+color:#aaa;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
+<h1>📈 Trading Tools</h1>
 
-<h1>Trading Tools</h1>
+<nav>
+<a href="#">Lot Size</a>
+<a href="#">Risk Reward</a>
+<a href="#">Profit</a>
+</nav>
+</header>
+
+<div class="container">
 
 <h2>Lot Size Calculator</h2>
 
-<input type="number" id="balance" placeholder="Balance ($)">
+<input type="number" id="balance" placeholder="Account Balance ($)">
+
 <input type="number" id="risk" placeholder="Risk (%)">
+
 <input type="number" id="sl" placeholder="Stop Loss (Pips)">
 
-<br><br>
+<button onclick="calculateLot()">
+Calculate Lot Size
+</button>
 
-<button onclick="calculateLot()">Calculate</button>
-
-<div class="result" id="result"></div>
+<div class="result" id="result">
+Result will appear here
+</div>
 
 </div>
 
+<footer>
+© 2026 Trading Tools<br>
+Founder & Developer: A Ridwan R
+</footer>
+
 <script>
+
 function calculateLot(){
 
 let balance=parseFloat(document.getElementById('balance').value);
@@ -69,7 +144,10 @@ let risk=parseFloat(document.getElementById('risk').value);
 let sl=parseFloat(document.getElementById('sl').value);
 
 if(!balance || !risk || !sl){
-document.getElementById('result').innerHTML="Please fill all fields";
+
+document.getElementById('result').innerHTML=
+"Please fill all fields";
+
 return;
 }
 
@@ -80,7 +158,8 @@ document.getElementById('result').innerHTML=
 "Recommended Lot: "+lot.toFixed(2);
 
 }
+
 </script>
 
 </body>
-  </html>
+</html>
